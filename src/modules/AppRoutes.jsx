@@ -8,13 +8,7 @@ import {
 } from "react-router";
 import { useSelector } from "react-redux";
 
-const Home = () => {
-  return (
-    <main style={{ padding: "1rem 0" }}>
-      <h2>Home</h2>
-    </main>
-  );
-};
+import { Home } from "./Common/home/Home";
 
 const Users = () => {
   return (
@@ -45,12 +39,7 @@ const Navigation = () => {
 const AppRoutes = () => {
   //  const roles = ["admin"];
   const { roles } = useSelector((state) => state.securitySlice);
-  //const dev = useSelector((state) => state.security);
-  const dev2 = useSelector((state) => state.utilSlice);
-  console.log("dev2", dev2);
   console.log("roles", roles);
-
-  //  const dev3 = useSelector((state) => state.userSlice);
 
   return (
     <BrowserRouter>
