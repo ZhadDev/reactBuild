@@ -5,7 +5,7 @@ const initialState = {
   id: "1",
   name: "robin",
   permissions: ["analyze"],
-  roles: ["admin", "user"],
+  roles: ["admin", "user", "alanize"],
 };
 
 export const securitySlice = createSlice({
