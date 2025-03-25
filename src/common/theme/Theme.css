@@ -1,0 +1,19 @@
+:root {
+  /* COLORES */
+  --primary-color: #d0e3fd;
+  --secondary-color: #a1c6fd;
+  --third-color: #1671f4;
+
+  /* FUENTES */
+  --font-Title: "Roboto", sans-serif;
+  --font-size-Title: 16px;
+  --font-weight-title: 400;
+
+  /* TAMAÑOS FUENTE */
+}
+
+.font-Title {
+  font-family: var(--font-Title);
+  font-size: 2.5rem;
+  font-weight: 500;
+}
