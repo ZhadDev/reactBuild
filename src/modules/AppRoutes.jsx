@@ -25,17 +25,10 @@ const Navigation = () => {
 
   // Actualiza el título del menú según la ruta actual
   useEffect(() => {
-    switch (location.pathname) {
-      case "/home":
-        setMenuTitle("Home");
-        break;
-      case "/users":
-        setMenuTitle("Users");
-        break;
-      default:
-        setMenuTitle("Menu");
-        break;
-    }
+    var path = location.pathname;
+    var url = path.split("/");
+    var titleURL = url[1];
+   setMenuTitle(titleURL);  
   }, [location.pathname]);
 
   const menu = {
