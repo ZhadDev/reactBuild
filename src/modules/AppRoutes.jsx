@@ -9,6 +9,7 @@ import {
 import { useSelector } from "react-redux";
 
 import { Home } from "./Common/home/Home";
+import Loaders from "../components/loaders/Loaders";
 
 const Users = () => {
   return (
@@ -37,30 +38,37 @@ const Navigation = () => {
 };
 
 const AppRoutes = () => {
+  const { ftnProgress } = useSelector((state) => state.utilSlice);
+
   //  const roles = ["admin"];
   const { roles } = useSelector((state) => state.securitySlice);
   console.log("roles", roles);
+  console.log("ftnProgress", ftnProgress);
 
   return (
-    <BrowserRouter>
-      <Navigation />
-      <Routes>
-        <Route
-          path="home"
-          element={
-            <ProtectedRoute
-              user={roles}
-              redirectPath={"/users"}
-              isAllowed={roles.includes("admin")}
-            >
-              <Home />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="users" index element={<Users />} />
-        <Route path="*" element={<NoMatch />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      {!ftnProgress && <Loaders />}
+
+      <BrowserRouter>
+        <Navigation />
+        <Routes>
+          <Route
+            path="home"
+            element={
+              <ProtectedRoute
+                user={roles}
+                redirectPath={"/users"}
+                isAllowed={roles.includes("admin")}
+              >
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="users" index element={<Users />} />
+          <Route path="*" element={<NoMatch />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 };
 
