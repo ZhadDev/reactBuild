@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Zsvg } from "../../libZhad/zSvg/Zsvg";
 
 /**
  * Componente para una opción del menú.
@@ -30,16 +31,14 @@ const MenuOption = ({
           <i className={iconClass}></i> {title}
         </div>
         {subMenuOptions && (
-          <button
-            className="container-menu-option-button"
-            onClick={toggleSubMenu}
+          <
           >
-            <i
-              className={`fas ${
-                isSubMenuExpanded ? "fa-chevron-up" : "fa-chevron-down"
-              }`}
-            ></i>
-          </button>
+            {!isSubMenuExpanded ? (
+              <Zsvg icon={"sort-down"} color={"white"} fontSize={"20pt"} onClick={toggleSubMenu} />
+            ) : (
+              <Zsvg icon={"sort-up"} color={"white"} fontSize={"20pt"} onClick={toggleSubMenu} />
+            )}
+          </>
         )}
       </div>
       {isSubMenuExpanded && subMenuOptions && (

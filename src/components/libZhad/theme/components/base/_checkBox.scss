@@ -1,0 +1,64 @@
+
+
+/* BOTON CHECK SWITCH */
+
+.zbtn-checkbox {
+	display: none;
+}
+
+.zlbl-squared{
+	display: grid;
+    align-items: center;
+    justify-items: center;
+	width: 26pt;
+	height: 26pt;
+	background-color: #aaa;
+	position: relative;
+	cursor: pointer;
+}
+
+.zbtn-checkbox:checked ~ .zlbl-squared {
+	background-color: $primary;
+}
+
+.zlbl-switch {
+	display: inline-block;
+	width: 55pt;
+	height: 25pt;
+	background-color: #aaa;
+	position: relative;
+	cursor: pointer;
+	border-radius: 100pt;
+	-webkit-border-radius: 100pt;
+	-moz-border-radius: 100pt;
+	-ms-border-radius: 100pt;
+	-o-border-radius: 100pt;
+}
+
+.zbtn-checkbox:checked ~ .zlbl-switch {
+	background-color: $primary;
+}
+
+.zlbl-switch::after {
+	position: absolute;
+	content: '';
+	width: 18pt;
+	height: 17pt;
+	background-color: #fff;
+	border-radius: 100pt;
+	-webkit-border-radius: 100pt;
+	-moz-border-radius: 100pt;
+	-ms-border-radius: 100pt;
+	-o-border-radius: 100pt;
+	top: 4pt;
+	left: 4pt;
+	transition: 0.3s;
+	-webkit-transition: 0.3s;
+	-moz-transition: 0.3s;
+	-ms-transition: 0.3s;
+	-o-transition: 0.3s;
+}
+
+.zbtn-checkbox:checked ~ .zlbl-switch::after {
+	left: 33pt;
+}

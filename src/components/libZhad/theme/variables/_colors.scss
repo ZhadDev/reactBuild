@@ -1,0 +1,19 @@
+$clr-primary: #ea5f23;    // #137fd9;
+$clr-secundary: #0069c0;
+
+$clr-btn:$clr-primary;
+$clr-bck:$clr-primary;
+
+$theme-clrs-notify: (
+  "success": #28a745,
+  "info": #17a2b8,
+  "warning": #ffc107,
+  "error": #b81111
+);
+
+/*
+.alert {
+  // Instead of $theme-color-#{warning}
+  background-color: map.get($theme-clrs-notify, "warning");
+}
+  */

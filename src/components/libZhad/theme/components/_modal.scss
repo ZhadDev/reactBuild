@@ -1,0 +1,114 @@
+
+//$clr-primary: #137fd9;
+//$clr-secundary: #0069c0;
+    $clr-background: rgb(43 104 65 / 46%);
+    $clr-btn: $clr-primary;
+    $clr-shadow: $clr-background;
+
+
+*{
+    margin: 0pt;
+    padding: 0pt;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+.center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.popup {
+    position: fixed;
+    top: -100vh;
+    left: 0pt;
+    width: 100%;
+    height: 100%;
+    transition: top 0ms ease-in-out 300ms;
+}
+
+.popup .overlay {
+    position: absolute;
+    top: 0pt;
+    left: 0pt;
+    width: 100%;
+    height: 100%;
+    background: $clr-background;
+    opacity: 0;
+    transition: opacity 100ms ease-in-out 200ms;
+}
+
+.popup .popup-content {
+    position: absolute;
+ //   top: 50%;
+ bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.15);
+//    width: 90%;
+    opacity: 1;
+ //   max-width: 350px;
+    background: #fff;
+    padding: 18pt;
+    border-radius: 20pt;
+    box-shadow: 0px 2px 2px 5px $clr-shadow;
+    transition: all 300ms ease-in-out;
+}
+
+.popup .popup-content h2 {
+    margin: 10px 0px;
+    font-size: 25pt;
+    color: #111;
+    text-align: center;
+}
+
+.popup .popup-content p {
+  //  margin: 15pt 0pt;
+    color: #222;
+    font-size: 16pt;
+    text-align: center;
+}
+
+.popup .popup-content .controls {
+    display: flex;
+    justify-content: space-between;
+    margin: 8pt 0pt 0pt;
+}
+
+.popup .popup-content .controls button {
+    padding: 5pt 10pt;
+    border: none;
+    outline: none;
+    font-size: 15pt;
+    border-radius: 10pt;
+    cursor: pointer;
+}
+
+.popup .popup-content .controls .close-btn{
+    background: transparent;
+    color: $clr-btn;
+}
+
+.popup .popup-content .controls .submit-btn{
+    background: $clr-btn;
+    color: #fff;
+}
+
+.popup.active {
+    top: 0pt;
+    transition: top 0ms ease-in-out 0ms;
+    z-index: 1102;
+}
+
+.popup.active .overlay{
+    opacity: 1;
+    transition: all 300ms ease-in-out;
+}
+
+.popup.active .popup-content {
+    transform: translate(-50%, 50%) scale(1);
+}

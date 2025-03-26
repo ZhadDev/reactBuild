@@ -1,0 +1,45 @@
+.zbtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6pt 16pt;
+//    border: 1pt solid;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    line-height: 1.5;
+    transition: all 150ms;
+    border-radius: 4pt;
+    width: fit-content;
+    font-size: 1rem;
+ //   color: #fff;
+    background-color: #f0f0f0;
+    border-color: #f0f0f0;
+    -webkit-transition: all 150ms;
+    -moz-transition: all 150ms;
+    -ms-transition: all 150ms;
+    -o-transition: all 150ms;
+    -webkit-border-radius: 4pt;
+    -moz-border-radius: 4pt;
+    -ms-border-radius: 4pt;
+    -o-border-radius: 4pt;
+
+    &:disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    &--outlined{
+        
+        color: $primary !important;
+        border: 2pt solid $primary !important;
+        background: #fff !important;
+    }
+
+    &--contained{
+        background-color: $primary !important;
+        border-color: $primary !important;
+        color: #fff !important;
+        margin-left: auto;
+    }
+}

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./Menu.css";
 import MenuOption from "./MenuOptions/MenuOptions";
 import { useNavigate } from "react-router";
+import { Zsvg } from "../libZhad/zSvg/Zsvg";
 
 /**
  * Componente principal del menú.
@@ -36,10 +37,10 @@ const Menu = (props) => {
           backgroundColor: props.menuOptionsBackgroundColor || "#f5f5f5",
         }}
       >
-        <button onClick={toggleMenu} className="menu-toggle-button">
-          <i className="fas fa-bars"></i>
+        <button className="menu-toggle-button">
+          <Zsvg icon={"menu"} color={"white"} fontSize={"18pt"} onClick={toggleMenu} />
         </button>
-        <div className="container-menu-components-title">{selectedTitle}</div>
+        <div className="container-menu-components-title">{props.menuTitle ? props.menuTitle : selectedTitle}</div>
         <img
           className="container-menu-user-img"
           style={{

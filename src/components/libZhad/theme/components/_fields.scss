@@ -1,0 +1,353 @@
+$default: gray;
+$primary: $clr-primary;
+$secundary: $clr-secundary;
+$transition: all 500ms ease;
+
+$fontForm:'Roboto', 'Helvetica', 'Arial', sans-serif;
+$fontWeight: 400;
+
+// $ico_error:
+ $colorError: #f44336;
+
+@import './base/checkBox';
+@import './base/button';
+@import './base/label';
+
+/* FIELD INPUTS */
+.zdivContainInput {
+	width: 100%;
+	border: 0;
+	margin: 0;
+	display: inline-flex;
+	padding: 0;
+	position: relative;
+	min-width: 0;
+	flex-direction: column;
+	vertical-align: top;
+}
+
+/* DIV CONTENEDOR DEL INPUT  */
+
+.zinputBase-root {
+	color: rgba(0, 0, 0, 0.87);
+	cursor: text;
+	display: inline-flex;
+	font-size: 1rem;
+	box-sizing: border-box;
+	align-items: center;
+	font-family: $fontForm;
+	font-weight: $fontWeight;
+/*	line-height: 1.1876em; */
+	letter-spacing: 0.00938em;
+}
+
+.zinputBase-fullWidth {
+	width: 100%;
+}
+
+.zinput-root {
+	position: relative;
+}
+
+.zinput-underline::before {
+	/* ::before  */
+	left: 0;
+	right: 0;
+	bottom: 0;
+	content: '\00a0';
+	position: absolute;
+	transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+	pointer-events: none;
+}
+
+.zinput-underline::after {
+	left: 0;
+	right: 0;
+	bottom: 0;
+	content: '';
+	position: absolute;
+	transform: scaleX(0);
+	transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+	border-bottom: 2px solid $primary !important;
+	pointer-events: none;
+}
+
+.zinput-underline-focusAF::after {
+	transform: scaleX(1) !important;
+}
+
+.zinput-underline-focusOFF::after {
+	transform: scaleX(0) !important;
+}
+
+.zinput-underline-focus-error::after {
+	transform: scaleX(1) !important;
+	border-bottom: 2px solid $colorError !important; 
+}
+
+label + .zinput-formCrtl {
+	margin-top: 16px;
+}
+
+/* INPUT */
+.zinputBase-input {
+	font: inherit;
+	color: #3c3c3c;
+	width: 100%;
+	border: 0;
+	height: 1.1876em;
+	margin: 0;
+	display: block;
+	padding: 7px 0 7px;
+	min-width: 0;
+	background: none;
+	box-sizing: content-box;
+	animation-name: mui-auto-fill-cancel;
+	letter-spacing: inherit;
+	animation-duration: 10ms;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.zinputBase-input:focus {
+	outline: 0;
+	background-color: #f2f2f2;
+}
+
+.zinput-input:focus {
+	/* background-color: palevioletred; */
+}
+
+
+/* ESTILOS DEL ICONO DEL TIPO FOREING */
+.zinputAdornment-root {
+	height: 0.01em;
+	display: flex;
+	max-height: 2em;
+	align-items: center;
+	white-space: nowrap;
+}
+
+.zinputAdornment-positionStart {
+	margin-right: 8px;
+}
+
+.ziconSvgHamb {
+	fill: currentColor;
+	width: 1em;
+	height: 1em;
+	display: inline-block;
+	font-size: 1.5rem;
+	transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+	flex-shrink: 0;
+	user-select: none;
+}
+/* ESTILOS PARA FOREIGN */
+
+.zstyleContainerFgn {
+	position: relative;
+	border: 1px dashed rgb(193, 189, 189);
+	border-radius: 5px;
+	background-color: rgba(142, 152, 152, 0.22);
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin-top: 3px;
+}
+
+.ztitle-select-icon {
+	font-size: 1rem;
+	color: $primary;
+	font-weight: $fontWeight;
+	padding-left: 0.8rem;
+}
+
+.zform-control-Search {
+	display: block;
+	width: auto;
+	padding: 0.375rem 0.75rem;
+	font-size: 1rem;
+	font-weight: $fontWeight;
+	line-height: 1.5;
+	color: #212529;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1pt solid #dee2e6;
+	appearance: none;
+	border-radius: 0.375rem;
+	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+	height: 25px;
+	margin: 0.3rem 0.5rem;
+	padding-right: 1rem;
+	-webkit-border-radius: 0.375rem;
+	-moz-border-radius: 0.375rem;
+	-ms-border-radius: 0.375rem;
+	-o-border-radius: 0.375rem;
+	-webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+	-moz-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+	-ms-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+	-o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.zbi-search {
+	color: rgb(173, 168, 168);
+	position: absolute;
+	top: 1.85rem;
+	right: 1rem;
+}
+
+.zselectBody {
+	width: 100%;
+	max-height: 10rem;
+	display: flex;
+	flex-wrap: wrap;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	overflow-y: auto;
+}
+
+.zlist-groups {
+	width: 100%;
+}
+
+/*   
+    color: rgb(234, 95, 35); */
+
+.zlist-group-items {
+	position: relative;
+	display: block;
+	/*	padding: var(--bs-list-group-item-padding-y)
+		var(--bs-list-group-item-padding-x); */
+	text-decoration: none;
+	background-color: rgb(255, 255, 255);
+	border: 1pt solid #dee2e6;
+	border-color: $primary;
+	color: $primary;
+}
+.zlist-group-items-action {
+	width: 100%;
+	color: $primary;
+	text-align: inherit;
+}
+
+.zlist-groups button {
+	max-height: 25pt;
+	height: 24pt;
+    padding: .30rem 1.25rem !important;
+	margin-bottom: 5pt;
+}
+
+.zselect-btnFgn {
+	display: flex;
+	justify-content: space-around;
+	padding: 0.5rem 1rem;
+}
+
+.zselect-btnFgns {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	padding: 0.5rem 1rem;
+	column-gap: 60pt;
+}
+
+.zbtnCloseSelect {
+	width: 7rem;
+	height: 1.8rem;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	background-color: $primary;
+	color: #fff;
+	border: 0;
+	border-radius: 5pt;
+}
+
+.zitemCheck {
+	background-color: $primary;
+	border-color: $primary;
+	color: rgb(255, 255, 255);
+}
+
+/* ESTILO BOTONES */
+.zbutton-root {
+	color: rgba(0, 0, 0, 0.87);
+	padding: 6px 16px;
+	font-size: 0.875rem;
+	min-width: 64px;
+	box-sizing: border-box;
+	transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+		box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+		border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+	font-family: $fontForm;
+	font-weight: $fontWeight;
+	line-height: 1.75;
+	border-radius: 4px;
+	letter-spacing: 0.02857em;
+	text-transform: uppercase;
+}
+
+.zbuttonBase-root {
+	width: 100%;
+	color: inherit;
+	border: 0;
+	cursor: pointer;
+	margin: 0;
+	display: inline-flex;
+	outline: 0;
+	padding: 0;
+	position: relative;
+	align-items: center;
+	user-select: none;
+	border-radius: 0;
+	vertical-align: middle;
+	appearance: none;
+	-moz-appearance: none;
+	justify-content: center;
+	text-decoration: none;
+	background-color: transparent;
+	-webkit-appearance: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.zbutton-outlined {
+	border: 1px solid rgba(0, 0, 0, 0.23);
+	padding: 5px 15px;
+}
+
+.zbutton-outlinedPrimary {
+	color: $primary;
+	margin-top: 3pt;
+	border: 2px solid rgba($color:$primary,$alpha: 0.9); 
+}
+
+/* FIELD BOOLEAN */
+.zcontainer-Boolean{
+	display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+/* FIELD FRGN MULTI */
+.ztxtField_cf_ffm__itemSelectCheck {
+	display: grid;
+	grid-template-columns: 24pt auto;
+	gap: 10pt;
+	align-items:center;
+}
+
+.ztxtField_cf_ffm__itemSelectCheck input:checked {
+	background-color: #f44336;
+}
+
+.ztxtField_cf_ffm__itemSelectCheckTab{
+	display: grid;
+	grid-template-columns: 24pt auto 50pt;
+	gap: 10pt;
+	align-items:center;
+}
+
+.ztxtField_cf_ffm__itemSelectCheckTab input:checked {
+	background-color: #f44336;
+}

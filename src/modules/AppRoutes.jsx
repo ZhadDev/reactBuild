@@ -1,10 +1,10 @@
-import { BrowserRouter, Routes, Route, Outlet, Navigate } from "react-router";
+import { BrowserRouter, Routes, Route, Outlet, Navigate, useLocation } from "react-router-dom"; // Asegúrate de usar react-router-dom
 import { useSelector, useDispatch } from "react-redux";
 
 import { Home } from "./Common/home/Home";
 import Loaders from "../components/loaders/Loaders";
 import Menu from "../components/Menu/Menu";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { setFtnProgress } from "../common/redux/slices/utilSlice";
 
 const Users = () => {
@@ -19,35 +19,42 @@ const NoMatch = () => {
   return <p>There's nothing here: 404!</p>;
 };
 
-const menu = {
-  menuTitle: "Menu",
-  menuOptionsBackgroundColor: "red",
-  menuTextColor: "white",
-  dataMenuOptions: [
-    { title: "home" },
-    { title: "login" },
-    {
-      title: "users",
-      subMenuOptions: [{ title: "profile" }, { title: "logout" }],
-    },
-  ],
-};
-
 const Navigation = () => {
+  const location = useLocation(); // Hook para obtener la ubicación actual
+  const [menuTitle, setMenuTitle] = useState("Menu"); // Estado para el título del menú
+
+  // Actualiza el título del menú según la ruta actual
+  useEffect(() => {
+    switch (location.pathname) {
+      case "/home":
+        setMenuTitle("Home");
+        break;
+      case "/users":
+        setMenuTitle("Users");
+        break;
+      default:
+        setMenuTitle("Menu");
+        break;
+    }
+  }, [location.pathname]);
+
+  const menu = {
+    menuTitle, // Usa el título dinámico
+    menuOptionsBackgroundColor: "red",
+    menuTextColor: "white",
+    dataMenuOptions: [
+      { title: "home" },
+      { title: "login" },
+      {
+        title: "users",
+        subMenuOptions: [{ title: "profile" }, { title: "logout" }],
+      },
+    ],
+  };
+
   return (
     <>
       <Menu {...menu} />
-      {/*
-        <nav
-        style={{
-          borderBottom: "solid 1px",
-          paddingBottom: "1rem",
-        }}
-      >
-        <Link to="/home">Home</Link>
-        <Link to="/users">Users</Link>
-      </nav>
-         */}
     </>
   );
 };

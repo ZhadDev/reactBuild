@@ -1,0 +1,89 @@
+.toast{
+    position: absolute;
+    top: 25pt;
+ //   right: 30pt;
+    border-radius: 12pt;
+    box-shadow: 0 5pt 10pt rgba($color: #000000, $alpha: 0.1);
+    overflow: hidden;
+    transform: translateX(calc(100% + 130pt));
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+}
+
+.toast.active{
+    transform: translateX(0%);
+ //   opacity: 1;
+}
+
+.toast .toast-content{
+    display: grid;
+    grid-template-columns: 50pt auto 25pt;
+}
+
+.toast-content .check{
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
+
+.toast-content .message{
+    display: flex;
+    flex-direction: column;
+    margin: 15pt 20pt;
+ }
+
+.message .text{
+    font-size: 13pt;
+    font-weight: 400;
+    color: #f2f2f2;
+}
+
+.message .text.text-1{
+    font-size: x-large;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 3pt;
+}
+
+.toast .close {
+ display: grid;
+ cursor: pointer;
+ opacity: 0.7;
+ align-content: center;
+ justify-content: center;
+ background: rgba(0, 0, 0, 0.1);
+}
+
+.toast .close:hover{
+    opacity: 1;
+}
+
+
+.toast .progress{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3pt;
+    width: 100%;
+    background: #ddd;
+}
+
+
+.toast .progress::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--my-typeNotifyClr-shdClr)
+}
+
+.progress.active::before{
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    100% {
+        right: 100%;
+    }
+}

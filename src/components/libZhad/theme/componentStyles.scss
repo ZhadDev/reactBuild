@@ -1,0 +1,22 @@
+// Global stylesheet where we will import all other styles
+
+//variables
+@import './variables/variables';
+
+//Fonts
+
+// Icon Fonts
+
+// Base
+
+//Themes
+
+//Pages
+
+//Components
+@import './components/fields';
+@import './components/modal';
+@import './components/wizard';
+@import './components/toastNotify'
+
+//Utilities

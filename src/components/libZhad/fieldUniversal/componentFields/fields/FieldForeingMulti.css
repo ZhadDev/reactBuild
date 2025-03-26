@@ -1,0 +1,38 @@
+.txtField_cf_ffm__itemSelectCheck {
+	display: grid;
+	grid-template-columns: 24pt auto;
+	gap: 10pt;
+}
+
+.divFieldGeneric {
+	width: 100%;
+	position: relative;
+	padding: 0.5rem 0.5rem 1rem;
+}
+
+.group-input {
+	display: grid;
+	width: 100%;
+	/*   flex-flow: wrap; */
+	cursor: pointer;
+}
+
+.flagMandatory {
+	font-size: 1.3rem;
+	font-weight: 400;
+	color: red;
+	position: absolute;
+	top: 1.5rem;
+	right: 2.4rem;
+}
+
+.msnMandatory {
+	color: rgb(244, 67, 54);
+	margin: 3px 0px 0px;
+	font-size: 0.75rem;
+	text-align: left;
+	font-family: Roboto, Helvetica, Arial, sans-serif;
+	font-weight: 400;
+	line-height: 1.66;
+	letter-spacing: 0.03333em;
+}
