@@ -10,12 +10,9 @@ const Loaders = ({ show = true }) => {
   const body = (
     <>
       {show && (
-        <div
-          onClick={handleModalClick}
-          //    id={props.id}
-          className="loader"
-          //  style={colorCelsia ? { backgroundColor: "rgb(0 0 0 / 77%)" } : {}}
-        />
+        <div className="container-loader" onClick={handleModalClick}>
+          <div className="loader" />
+        </div>
       )}
     </>
   );

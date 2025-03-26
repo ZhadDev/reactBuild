@@ -1,9 +1,11 @@
 import { BrowserRouter, Routes, Route, Outlet, Navigate } from "react-router";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { Home } from "./Common/home/Home";
 import Loaders from "../components/loaders/Loaders";
 import Menu from "../components/Menu/Menu";
+import { useEffect } from "react";
+import { setFtnProgress } from "../common/redux/slices/utilSlice";
 
 const Users = () => {
   return (
@@ -54,8 +56,17 @@ const AppRoutes = () => {
   const { ftnProgress } = useSelector((state) => state.utilSlice);
 
   const { roles } = useSelector((state) => state.securitySlice);
+  const dispatch = useDispatch();
   console.log("roles", roles);
   console.log("ftnProgress", ftnProgress);
+
+  useEffect(() => {
+    console.log("AppRoutes useEffect");
+    setTimeout(() => {
+      dispatch(setFtnProgress(true));
+      console.log("AppRoutes setTimeout");
+    }, 4000);
+  }, []);
 
   return (
     <>
