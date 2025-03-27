@@ -1,10 +1,16 @@
-import { BrowserRouter, Routes, Route, Outlet, Navigate, useLocation } from "react-router-dom"; // Asegúrate de usar react-router-dom
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Outlet,
+  Navigate,
+} from "react-router-dom"; // Asegúrate de usar react-router-dom
 import { useSelector, useDispatch } from "react-redux";
 
 import { Home } from "./Common/home/Home";
 import Loaders from "../components/loaders/Loaders";
 import Menu from "../components/Menu/Menu";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { setFtnProgress } from "../common/redux/slices/utilSlice";
 
 const Users = () => {
@@ -20,19 +26,8 @@ const NoMatch = () => {
 };
 
 const Navigation = () => {
-  const location = useLocation(); // Hook para obtener la ubicación actual
-  const [menuTitle, setMenuTitle] = useState("Menu"); // Estado para el título del menú
-
-  // Actualiza el título del menú según la ruta actual
-  useEffect(() => {
-    var path = location.pathname;
-    var url = path.split("/");
-    var titleURL = url[1];
-   setMenuTitle(titleURL);  
-  }, [location.pathname]);
-
   const menu = {
-    menuTitle, // Usa el título dinámico
+    menuTitle: "zhad", // Usa el título dinámico
     menuOptionsBackgroundColor: "red",
     menuTextColor: "white",
     dataMenuOptions: [
@@ -61,12 +56,11 @@ const AppRoutes = () => {
   console.log("ftnProgress", ftnProgress);
 
   useEffect(() => {
-    console.log("AppRoutes useEffect");
     setTimeout(() => {
       dispatch(setFtnProgress(true));
       console.log("AppRoutes setTimeout");
-    }, 4000);
-  }, []);
+    }, 2000);
+  }, [dispatch]);
 
   return (
     <>

@@ -1,19 +1,39 @@
-import React, { useState } from "react";
-//import '@fortawesome/fontawesome-free/css/all.min.css';
+import { useState, useEffect } from "react";
 import "./Menu.css";
 import MenuOption from "./MenuOptions/MenuOptions";
 import { useNavigate } from "react-router";
 import { Zsvg } from "../libZhad/zSvg/Zsvg";
+import PropTypes from "prop-types";
 
 /**
  * Componente principal del menú.
  * @param {Object} props - Las propiedades del componente.
- * @param {string} props.menuTitle - El título inicial del menú.
+ * @param {string} menuTitle - El título inicial del menú.
  */
-const Menu = (props) => {
+const Menu = ({
+  menuTitle = "",
+  menuTextColor = "black",
+  heightTopMenu = "50px",
+  menuOptionsBackgroundColor = "#f5f5f5",
+  widthUserIconImg = "40px",
+  heightUserIconImg = "40px",
+  UserIcon = "https://unavatar.io/none",
+  widthMenuOptions = "300px",
+  widthUserIconMenuOptions = "70px",
+  heightUserIconMenuOptions = "70px",
+  dataMenuOptions = [],
+}) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [selectedTitle, setSelectedTitle] = useState(props.menuTitle);
+  const [selectedTitle, setSelectedTitle] = useState(menuTitle);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const path = location.pathname;
+    const url = path.split("/");
+    const titleURL = url[1];
+    navigate(path);
+    setSelectedTitle(titleURL);
+  }, [navigate]);
 
   const toggleMenu = () => {
     setIsExpanded(!isExpanded);
@@ -26,29 +46,33 @@ const Menu = (props) => {
   };
 
   return (
-    <div
-      className="container-all-menu"
-      style={{ color: props.menuTextColor || "black" }}
-    >
+    <div className="container-all-menu" style={{ color: menuTextColor }}>
       <div
         className="container-menu-components"
         style={{
-          height: props.heightTopMenu || "50px",
-          backgroundColor: props.menuOptionsBackgroundColor || "#f5f5f5",
+          height: heightTopMenu,
+          backgroundColor: menuOptionsBackgroundColor,
         }}
       >
         <button className="menu-toggle-button">
-          <Zsvg icon={"menu"} color={"white"} fontSize={"18pt"} onClick={toggleMenu} />
+          <Zsvg
+            icon={"menu"}
+            color={"white"}
+            fontSize={"18pt"}
+            onClick={toggleMenu}
+          />
         </button>
-        <div className="container-menu-components-title">{props.menuTitle ? props.menuTitle : selectedTitle}</div>
+        <div className="container-menu-components-title">
+          {selectedTitle ? selectedTitle : menuTitle}
+        </div>
         <img
           className="container-menu-user-img"
           style={{
-            width: props.widthUserIconImg || "40px",
-            height: props.heightUserIconImg || "40px",
+            width: widthUserIconImg,
+            height: heightUserIconImg,
           }}
           hidden={isExpanded}
-          src={props.UserIcon ? props.UserIcon : "https://unavatar.io/none"}
+          src={UserIcon}
           alt={"icono de usuario"}
         />
       </div>
@@ -56,22 +80,22 @@ const Menu = (props) => {
         <div
           className="container-menu-options"
           style={{
-            width: props.widthMenuOptions || "300px",
-            backgroundColor: props.menuOptionsBackgroundColor || "#f5f5f5",
+            width: widthMenuOptions,
+            backgroundColor: menuOptionsBackgroundColor,
           }}
         >
           <div className="container-menu-option-user">
             <img
               className="container-menu-option-user-img"
               style={{
-                width: props.widthUserIconMenuOptions || "70px",
-                height: props.heightUserIconMenuOptions || "70px",
+                width: widthUserIconMenuOptions,
+                height: heightUserIconMenuOptions,
               }}
-              src={props.UserIcon ? props.UserIcon : "https://unavatar.io/none"}
+              src={UserIcon}
               alt={"icono de usuario"}
             />
           </div>
-          {props.dataMenuOptions.map((option, index) => (
+          {dataMenuOptions.map((option, index) => (
             <MenuOption
               key={index}
               title={option.title}
@@ -87,6 +111,20 @@ const Menu = (props) => {
       )}
     </div>
   );
+};
+
+PropTypes.Menu = {
+  menuTitle: PropTypes.string,
+  menuTextColor: PropTypes.string,
+  heightTopMenu: PropTypes.string,
+  menuOptionsBackgroundColor: PropTypes.string,
+  widthUserIconImg: PropTypes.string,
+  heightUserIconImg: PropTypes.string,
+  UserIcon: PropTypes.string,
+  widthMenuOptions: PropTypes.string,
+  widthUserIconMenuOptions: PropTypes.string,
+  heightUserIconMenuOptions: PropTypes.string,
+  dataMenuOptions: PropTypes.array,
 };
 
 export default Menu;

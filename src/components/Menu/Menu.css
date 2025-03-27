@@ -31,13 +31,13 @@
 }
 
 .container-menu-options {
-  max-height: 400px;
+  height: 100vh;
   overflow-y: auto;
   position: absolute;
   top: 100%;
   left: 0;
   z-index: 1;
-  border: 1px solid #ccc; /* Opcional: agrega un borde para diferenciar el menú */
+  /* border: 1px solid #ccc; */ /* Opcional: agrega un borde para diferenciar el menú */
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Opcional: agrega sombra para un mejor diseño */
 }
 
@@ -65,14 +65,14 @@
   scrollbar-color: #888 #f1f1f1; /* Color del "pulgar" y del fondo */
 }
 
-.container-menu-option-user{
+.container-menu-option-user {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
 }
 
-.container-menu-option-user-img{
+.container-menu-option-user-img {
   border-radius: 1000px;
   cursor: pointer;
 }
@@ -90,14 +90,14 @@
   background-color: #d0d0d0;
 }
 
-.container-menu-option-button{
- cursor: pointer;
- margin-left: 16px;
- border: 0;
- border-radius: 999px;
- padding:  6px 16px;
- font-weight: bold;
- border: 1px solid #000;
+.container-menu-option-button {
+  cursor: pointer;
+  margin-left: 16px;
+  border: 0;
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-weight: bold;
+  border: 1px solid #000;
 }
 
 .container-submenu-options {
@@ -122,7 +122,7 @@
   cursor: pointer;
 }
 
-.container-menu-footer{
+.container-menu-footer {
   align-items: center;
   text-align: center;
   font-size: small;

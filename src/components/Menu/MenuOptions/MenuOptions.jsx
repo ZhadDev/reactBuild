@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Zsvg } from "../../libZhad/zSvg/Zsvg";
 
 /**
@@ -31,12 +31,21 @@ const MenuOption = ({
           <i className={iconClass}></i> {title}
         </div>
         {subMenuOptions && (
-          <
-          >
+          <>
             {!isSubMenuExpanded ? (
-              <Zsvg icon={"sort-down"} color={"white"} fontSize={"20pt"} onClick={toggleSubMenu} />
+              <Zsvg
+                icon={"sort-down"}
+                color={"white"}
+                fontSize={"20pt"}
+                onClick={toggleSubMenu}
+              />
             ) : (
-              <Zsvg icon={"sort-up"} color={"white"} fontSize={"20pt"} onClick={toggleSubMenu} />
+              <Zsvg
+                icon={"sort-up"}
+                color={"white"}
+                fontSize={"20pt"}
+                onClick={toggleSubMenu}
+              />
             )}
           </>
         )}
