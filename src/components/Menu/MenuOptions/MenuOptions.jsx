@@ -27,7 +27,7 @@ const MenuOption = ({
         className="container-menu-option"
         onClick={() => onClickUpdateTitle(title)}
       >
-        <div>
+        <div className="font-Title">
           <i className={iconClass}></i> {title}
         </div>
         {subMenuOptions && (

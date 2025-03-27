@@ -6,12 +6,14 @@ import {
   Navigate,
 } from "react-router-dom"; // Asegúrate de usar react-router-dom
 import { useSelector, useDispatch } from "react-redux";
-
-import { Home } from "./Common/home/Home";
 import Loaders from "../components/loaders/Loaders";
 import Menu from "../components/Menu/Menu";
 import { useEffect } from "react";
 import { setFtnProgress } from "../common/redux/slices/utilSlice";
+
+// Modules COMMON
+import { Home } from "./Common/home/Home";
+import { NoMatch } from "./Common/noMatch/NoMatch";
 
 const Users = () => {
   return (
@@ -21,14 +23,10 @@ const Users = () => {
   );
 };
 
-const NoMatch = () => {
-  return <p>There's nothing here: 404!</p>;
-};
-
 const Navigation = () => {
   const menu = {
     menuTitle: "zhad", // Usa el título dinámico
-    menuOptionsBackgroundColor: "red",
+    menuOptionsBackgroundColor: "",
     menuTextColor: "white",
     dataMenuOptions: [
       { title: "home" },
@@ -56,6 +54,7 @@ const AppRoutes = () => {
   console.log("ftnProgress", ftnProgress);
 
   useEffect(() => {
+    debugger;
     setTimeout(() => {
       dispatch(setFtnProgress(true));
       console.log("AppRoutes setTimeout");
@@ -67,7 +66,7 @@ const AppRoutes = () => {
       {!ftnProgress && <Loaders />}
 
       <BrowserRouter>
-        <Navigation />
+        {!["/login", "/*"].includes(location.pathname) ? <Navigation /> : null}
         <Routes>
           <Route
             path="home"

@@ -14,13 +14,13 @@ const Menu = ({
   menuTitle = "",
   menuTextColor = "black",
   heightTopMenu = "50px",
-  menuOptionsBackgroundColor = "#f5f5f5",
+  menuOptionsBackgroundColor = "",
   widthUserIconImg = "40px",
   heightUserIconImg = "40px",
   UserIcon = "https://unavatar.io/none",
   widthMenuOptions = "300px",
-  widthUserIconMenuOptions = "70px",
-  heightUserIconMenuOptions = "70px",
+  widthUserIconMenuOptions = "120px",
+  heightUserIconMenuOptions = "120px",
   dataMenuOptions = [],
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -95,6 +95,7 @@ const Menu = ({
               alt={"icono de usuario"}
             />
           </div>
+          <hr className="menu-hr-user" />
           {dataMenuOptions.map((option, index) => (
             <MenuOption
               key={index}

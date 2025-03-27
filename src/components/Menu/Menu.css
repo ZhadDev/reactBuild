@@ -10,6 +10,7 @@
   align-items: center;
   width: 100%;
   padding: 10px;
+  background-color: var(--primary-color);
 }
 
 .menu-toggle-button {
@@ -31,12 +32,13 @@
 }
 
 .container-menu-options {
-  height: 100vh;
+  height: calc(100vh - 50px);
   overflow-y: auto;
   position: absolute;
   top: 100%;
   left: 0;
   z-index: 1;
+  background-color: var(--primary-color);
   /* border: 1px solid #ccc; */ /* Opcional: agrega un borde para diferenciar el menú */
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Opcional: agrega sombra para un mejor diseño */
 }
@@ -77,6 +79,11 @@
   cursor: pointer;
 }
 
+.menu-hr-user {
+  width: 80%;
+  border: 1px solid var(--secondary-color);
+}
+
 .container-menu-option {
   padding: 10px;
   text-align: center;
@@ -87,7 +94,7 @@
 }
 
 .container-menu-option:hover {
-  background-color: #d0d0d0;
+  background-color: var(--secondary-color);
 }
 
 .container-menu-option-button {
