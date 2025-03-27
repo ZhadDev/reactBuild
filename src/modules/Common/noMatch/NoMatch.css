@@ -1,0 +1,23 @@
+.container-noMatch{
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.container-noMatch .pOne{
+    font-size: 100px;
+    font-family: cursive;
+  
+}
+.container-noMatch .pTwo{
+    font-size: 45px;
+    font-family: monospace;
+
+}
+.container-noMatch .pThree{
+    font-size: 25px;
+    font-family: math;
+ 
+}
