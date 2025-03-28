@@ -25,6 +25,7 @@ const Menu = ({
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [selectedTitle, setSelectedTitle] = useState(menuTitle);
+  const [isSubMenuExpanded, setIsSubMenuExpanded] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -39,10 +40,14 @@ const Menu = ({
     setIsExpanded(!isExpanded);
   };
 
-  const handleOptionClick = (title) => {
-    setSelectedTitle(title);
-    setIsExpanded(false);
-    navigate(`/${title}`);
+  const handleOptionClick = ({ title, subMenuOptions = null }) => {
+    if (subMenuOptions === null) {
+      setSelectedTitle(title);
+      setIsExpanded(false);
+      navigate(`/${title}`);
+    } else {
+      setIsSubMenuExpanded(!isSubMenuExpanded);
+    }
   };
 
   return (
@@ -103,6 +108,8 @@ const Menu = ({
               iconClass={option.iconClass}
               onClickUpdateTitle={handleOptionClick}
               subMenuOptions={option.subMenuOptions}
+              isSubMenuExpanded={isSubMenuExpanded}
+              setIsSubMenuExpanded={setIsSubMenuExpanded}
             />
           ))}
           <div className="container-menu-footer">

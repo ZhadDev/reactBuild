@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Zsvg } from "../../libZhad/zSvg/Zsvg";
 
 /**
@@ -13,8 +12,10 @@ const MenuOption = ({
   iconClass,
   onClickUpdateTitle,
   subMenuOptions,
+  isSubMenuExpanded,
+  setIsSubMenuExpanded,
 }) => {
-  const [isSubMenuExpanded, setIsSubMenuExpanded] = useState(false);
+  // const [isSubMenuExpanded, setIsSubMenuExpanded] = useState(false);
 
   const toggleSubMenu = (e) => {
     e.stopPropagation(); // Evita que el evento se propague al contenedor padre
@@ -25,7 +26,7 @@ const MenuOption = ({
     <>
       <div
         className="container-menu-option"
-        onClick={() => onClickUpdateTitle(title)}
+        onClick={() => onClickUpdateTitle({ title, subMenuOptions })}
       >
         <div className="font-Title">
           <i className={iconClass}></i> {title}

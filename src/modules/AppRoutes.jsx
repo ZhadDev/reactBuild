@@ -54,10 +54,8 @@ const AppRoutes = () => {
   console.log("ftnProgress", ftnProgress);
 
   useEffect(() => {
-    debugger;
     setTimeout(() => {
       dispatch(setFtnProgress(true));
-      console.log("AppRoutes setTimeout");
     }, 2000);
   }, [dispatch]);
 
