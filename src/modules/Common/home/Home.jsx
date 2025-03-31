@@ -4,7 +4,7 @@ import { delayedAction } from "../../../common/redux/slices/utilSlice";
 const Home = () => {
   const dispatch = useDispatch();
   const handleClic = () => {
-    const data = ["success", "PROBANDO CAPACIDAD"];
+    const data = ["error", "problemas de data"];
     dispatch(delayedAction(data));
   };
 

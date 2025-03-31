@@ -1,62 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-* {
-  padding: 0%;
-  margin: 0%;
-  font-size: 18px;
-  font-family: "Roboto", sans-serif;
-}
-
-:root {
-}
-
-.btn {
-  padding: 15px 35px;
-  margin: 10px;
-  border-radius: 5px;
-  color: #ffffff;
-  transition: 0.5s;
-}
-
-#success {
-  background-color: var(--success-background);
-  border: 3px solid var(--success-border);
-}
-
-#success:hover {
-  background-color: var(--success-border);
-}
-
-#error {
-  background-color: var(--error-background);
-  border: 3px solid var(--error-border);
-}
-
-#error:hover {
-  background-color: var(--error-border);
-}
-
-#warning {
-  background-color: var(--warning-background);
-  border: 3px solid var(--warning-border);
-}
-
-#warning:hover {
-  background-color: var(--warning-border);
-}
-
-#info {
-  background-color: var(--info-background);
-  border: 3px solid var(--info-border);
-}
-
-#info:hover {
-  background-color: var(--info-border);
-}
-
 .box {
-  display: flex;
-  position: absolute;
-  transform: translate(100%, -50%);
+  display: grid;
+  justify-items: center;
 }
 
 .notification {
@@ -75,7 +19,12 @@
 
 .success {
   color: var(--success-border);
-  background-image: linear-gradient(#01c851aa, var(--success-background) 100%);
+  background-image: linear-gradient(
+    to right,
+    #01c851aa,
+    var(--success-background),
+    var(--success-background) 43%
+  );
 }
 
 .success::before {
@@ -95,7 +44,8 @@
   background-image: linear-gradient(
     to right,
     #ff3447aa,
-    var(--error-background) 95%
+    var(--error-background),
+    var(--error-background) 43%
   );
 }
 
@@ -116,7 +66,8 @@
   background-image: linear-gradient(
     to right,
     #ffbb35aa,
-    var(--warning-background) 95%
+    var(--warning-background),
+    var(--warning-background) 43%
   );
 }
 
@@ -137,7 +88,8 @@
   background-image: linear-gradient(
     to right,
     #33b5e7aa,
-    var(--info-background) 95%
+    var(--info-background),
+    var(--info-background) 43%
   );
 }
 

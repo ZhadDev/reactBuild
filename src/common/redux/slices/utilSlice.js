@@ -57,7 +57,7 @@ export const utilSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder
+    builder // pending => fulfilled => rejected
       .addCase(delayedAction.pending, (state, action) => {
         const delayData = action.meta.arg;
 
