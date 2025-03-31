@@ -14,6 +14,7 @@ import { setFtnProgress } from "../common/redux/slices/utilSlice";
 // Modules COMMON
 import { Home } from "./Common/home/Home";
 import { NoMatch } from "./Common/noMatch/NoMatch";
+import { ToastNotify } from "../components/toastNotify/ToastNotify";
 
 const Users = () => {
   return (
@@ -46,23 +47,24 @@ const Navigation = () => {
 };
 
 const AppRoutes = () => {
-  const { ftnProgress } = useSelector((state) => state.utilSlice);
+  const { ftnProgress, ftnDialogAlert } = useSelector(
+    (state) => state.utilSlice
+  );
 
   const { roles } = useSelector((state) => state.securitySlice);
   const dispatch = useDispatch();
-  console.log("roles", roles);
-  console.log("ftnProgress", ftnProgress);
+  const notify = { type: ftnDialogAlert.title, message: ftnDialogAlert.msn };
 
   useEffect(() => {
     setTimeout(() => {
       dispatch(setFtnProgress(true));
-    }, 2000);
+    }, 1800);
   }, [dispatch]);
 
   return (
     <>
       {!ftnProgress && <Loaders />}
-
+      {Object.keys(ftnDialogAlert).length > 0 && <ToastNotify {...notify} />}
       <BrowserRouter>
         {!["/login", "/*"].includes(location.pathname) ? <Navigation /> : null}
         <Routes>

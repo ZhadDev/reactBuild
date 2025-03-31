@@ -7,7 +7,7 @@
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background: #1d374f80;
+  background: var(--bckg-loader-clr);
 }
 
 .loader {
@@ -18,14 +18,14 @@
   text-transform: uppercase;
   color: #0000;
   -webkit-text-stroke: 1px #000;
-  --g: conic-gradient(#000 0 0) no-repeat text;
+  --g: var(--font-loader-clr);
   background: var(--g) 0, var(--g) 1ch, var(--g) 2ch, var(--g) 3ch, var(--g) 4ch,
     var(--g) 5ch, var(--g) 6ch;
   background-position-y: 100%;
   animation: l15 3s infinite;
 }
 .loader:before {
-  content: "Loading";
+  content: "ZhadDev";
   display: grid;
   height: 100vh;
   align-content: center;

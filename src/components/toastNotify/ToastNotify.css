@@ -7,22 +7,6 @@
 }
 
 :root {
-  --background-color: #2c283e;
-  --succses-border: #01c851;
-  --error-border: #ff3447;
-  --warning-border: #ffbb35;
-  --info-border: #33b5e7;
-  --succses-background: #017e3330;
-  --error-background: #cd000130;
-  --warning-background: #ff880130;
-  --info-background: #0099cc30;
-}
-
-body {
-  background-color: var(--background-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .btn {
@@ -33,13 +17,13 @@ body {
   transition: 0.5s;
 }
 
-#succses {
-  background-color: var(--succses-background);
-  border: 3px solid var(--succses-border);
+#success {
+  background-color: var(--success-background);
+  border: 3px solid var(--success-border);
 }
 
-#succses:hover {
-  background-color: var(--succses-border);
+#success:hover {
+  background-color: var(--success-border);
 }
 
 #error {
@@ -71,12 +55,8 @@ body {
 
 .box {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   position: absolute;
-  top: 25px;
-  right: 25px;
+  transform: translate(100%, -50%);
 }
 
 .notification {
@@ -89,29 +69,25 @@ body {
   border-radius: 5px;
   position: relative;
   margin-bottom: 10px;
-  animation: show 5s ease;
-  opacity: 0;
+  animation: show var(--zNtfy-timer) ease;
+  opacity: 0.5;
 }
 
-.succses {
-  color: var(--succses-border);
-  background-image: linear-gradient(
-    to right,
-    #01c851aa,
-    var(--succses-background) 25%
-  );
+.success {
+  color: var(--success-border);
+  background-image: linear-gradient(#01c851aa, var(--success-background) 100%);
 }
 
-.succses::before {
+.success::before {
   content: "";
   width: 0%;
   height: 3px;
-  background-color: var(--succses-border);
-  box-shadow: 0px 0px 10px var(--succses-border);
+  background-color: var(--success-border);
+  box-shadow: 0px 0px 10px var(--success-border);
   position: absolute;
   bottom: 0px;
   right: 0px;
-  animation: end 5s linear;
+  animation: end var(--zNtfy-timer) linear;
 }
 
 .error {
@@ -119,7 +95,7 @@ body {
   background-image: linear-gradient(
     to right,
     #ff3447aa,
-    var(--error-background) 25%
+    var(--error-background) 95%
   );
 }
 
@@ -132,7 +108,7 @@ body {
   position: absolute;
   bottom: 0px;
   right: 0px;
-  animation: end 5s linear;
+  animation: end var(--zNtfy-timer) linear;
 }
 
 .warning {
@@ -140,7 +116,7 @@ body {
   background-image: linear-gradient(
     to right,
     #ffbb35aa,
-    var(--warning-background) 25%
+    var(--warning-background) 95%
   );
 }
 
@@ -153,7 +129,7 @@ body {
   position: absolute;
   bottom: 0px;
   right: 0px;
-  animation: end 5s linear;
+  animation: end var(--zNtfy-timer) linear;
 }
 
 .info {
@@ -161,7 +137,7 @@ body {
   background-image: linear-gradient(
     to right,
     #33b5e7aa,
-    var(--info-background) 25%
+    var(--info-background) 95%
   );
 }
 
@@ -174,7 +150,7 @@ body {
   position: absolute;
   bottom: 0px;
   right: 0px;
-  animation: end 5s linear;
+  animation: end var(--zNtfy-timer) linear;
 }
 
 .title h6 {

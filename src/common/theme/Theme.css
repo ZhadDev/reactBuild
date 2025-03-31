@@ -1,15 +1,31 @@
 :root {
-  /* COLORES */
+  /* COLORS */
   --primary-color: #222228;
   --secondary-color: #38383e;
   --third-color: #1277ff;
 
-  /* FUENTES */
+  /* FONTS */
   --font-Title: "Roboto", sans-serif;
   --font-size-Title: 16px;
   --font-weight-title: 400;
 
-  /* TAMAÑOS FUENTE */
+  /* SIZE FONTS */
+
+  /* NOTIFICACIONES PUSH || TOAST */
+  --background-color: #2c283e;
+  --success-border: #014b1e;
+  --error-border: #ff3447;
+  --warning-border: #ffbb35;
+  --info-border: #33b5e7;
+  --success-background: #3ab65c;
+  --error-background: #bf333b;
+  --warning-background: #bc8c12;
+  --info-background: #1898c0;
+
+  /* COLORS LOADER */
+  --bckg-loader-clr: #1179da80;
+  --font-loader-clr: conic-gradient(#1277ff 0 0) no-repeat text;
+  --time-loader-dft: 3s;
 }
 
 .font-Title {

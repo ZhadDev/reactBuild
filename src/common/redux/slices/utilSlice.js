@@ -1,12 +1,26 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice, current, createAsyncThunk } from "@reduxjs/toolkit";
+import { TIMER_NTFY } from "../../config";
 
 const lang = window.navigator.language.split("-")[0];
+
+export const delayedAction = createAsyncThunk(
+  "utilSlice/delayedAction",
+  async (payload, { dipatch }) => {
+    const timerAsync = TIMER_NTFY * 1000;
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(payload);
+        console.log("timer", TIMER_NTFY);
+      }, timerAsync);
+    });
+  }
+);
 
 let initialStateUtilSlice = {
   i18n: lang,
   ftNotify: null,
   ftnProgress: false,
-  ftnDialogAlert: null,
+  ftnDialogAlert: {},
 };
 
 export const utilSlice = createSlice({
@@ -26,13 +40,13 @@ export const utilSlice = createSlice({
       initialStateUtilSlice = current(state);
     },
     setFtnDialogAlert: (state, action) => {
-      if (action.payload !== null && state.ftnDialogAlert === null) {
+      if (Object.keys(state.ftnDialogAlert).length > 0) {
         const data = {
           title: action.payload[0],
           msn: action.payload[1],
         };
         state.ftnDialogAlert = data;
-      } else state.ftnDialogAlert = null;
+      } else state.ftnDialogAlert = {};
       initialStateUtilSlice = current(state);
     },
     setFtnProgress: (state, action) => {
@@ -41,6 +55,21 @@ export const utilSlice = createSlice({
       }
       initialStateUtilSlice = current(state);
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(delayedAction.pending, (state, action) => {
+        const delayData = action.meta.arg;
+
+        const data = {
+          title: delayData[0],
+          msn: delayData[1],
+        };
+        state.ftnDialogAlert = data;
+      })
+      .addCase(delayedAction.fulfilled, (state) => {
+        state.ftnDialogAlert = {};
+      });
   },
 });
 
