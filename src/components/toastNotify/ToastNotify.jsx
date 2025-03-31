@@ -18,6 +18,11 @@ const iconToast = (type) => {
   return result;
 };
 
+const capitalLetter = (cadena) => {
+  if (!cadena) return cadena; // Si la cadena está vacía, la devuelve tal cual
+  return cadena.charAt(0).toUpperCase() + cadena.slice(1);
+};
+
 const objToast = (type) => {
   const objRes = {};
   const resUpp = type.toUpperCase();
@@ -60,9 +65,9 @@ const ToastNotify = ({
             <div className="icon">
               <Zsvg color="#fff" icon={objNotify.icon} fontSize="15pt" />
             </div>
-            <div className="title">
-              <h1>{objNotify.type}</h1>
-              <h6>{message}</h6>
+            <div className="toast-body">
+              <div className="title">{capitalLetter(objNotify.type)}</div>
+              {message}
             </div>
             <div className="close" onclick={onClicCancel}>
               <Zsvg color="white" icon={"cancel"} fontSize="15pt" />

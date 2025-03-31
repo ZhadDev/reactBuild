@@ -105,8 +105,17 @@
   animation: end var(--zNtfy-timer) linear;
 }
 
-.title h6 {
-  font-size: small;
+.toast-body {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #fff;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
   color: #c9c9c9;
 }
 
