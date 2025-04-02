@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./Menu.css";
 import MenuOption from "./MenuOptions/MenuOptions";
 import { useNavigate } from "react-router";
@@ -27,6 +27,8 @@ const Menu = ({
   const [selectedTitle, setSelectedTitle] = useState(menuTitle);
   const [isSubMenuExpanded, setIsSubMenuExpanded] = useState(false);
   const navigate = useNavigate();
+  const menuRef = useRef(null);
+  const menuOptRef = useRef(null);
 
   useEffect(() => {
     const path = location.pathname;
@@ -35,6 +37,27 @@ const Menu = ({
     navigate(path);
     setSelectedTitle(titleURL);
   }, [navigate]);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        menuOptRef.current &&
+        !menuOptRef.current.contains(event.target)
+      ) {
+        setIsExpanded(false);
+      }
+    }
+
+    // Agregar el event listener cuando el componente se monta
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Limpiar el event listener cuando el componente se desmonta
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const toggleMenu = () => {
     setIsExpanded(!isExpanded);
@@ -58,6 +81,7 @@ const Menu = ({
           height: heightTopMenu,
           backgroundColor: menuOptionsBackgroundColor,
         }}
+        ref={menuRef}
       >
         <button className="menu-toggle-button">
           <Zsvg
@@ -81,42 +105,43 @@ const Menu = ({
           alt={"icono de usuario"}
         />
       </div>
-      {isExpanded && (
-        <div
-          className="container-menu-options"
-          style={{
-            width: widthMenuOptions,
-            backgroundColor: menuOptionsBackgroundColor,
-          }}
-        >
-          <div className="container-menu-option-user">
-            <img
-              className="container-menu-option-user-img"
-              style={{
-                width: widthUserIconMenuOptions,
-                height: heightUserIconMenuOptions,
-              }}
-              src={UserIcon}
-              alt={"icono de usuario"}
-            />
-          </div>
-          <hr className="menu-hr-user" />
-          {dataMenuOptions.map((option, index) => (
-            <MenuOption
-              key={index}
-              title={option.title}
-              iconClass={option.iconClass}
-              onClickUpdateTitle={handleOptionClick}
-              subMenuOptions={option.subMenuOptions}
-              isSubMenuExpanded={isSubMenuExpanded}
-              setIsSubMenuExpanded={setIsSubMenuExpanded}
-            />
-          ))}
-          <div className="container-menu-footer">
-            <p>Juan.cuesta@iptotal.com ©</p>
-          </div>
+      <div
+        className={`container-menu-options ${
+          isExpanded ? "menu-options-expanded" : ""
+        }`}
+        style={{
+          width: widthMenuOptions,
+          backgroundColor: menuOptionsBackgroundColor,
+        }}
+        ref={menuOptRef}
+      >
+        <div className="container-menu-option-user">
+          <img
+            className="container-menu-option-user-img"
+            style={{
+              width: widthUserIconMenuOptions,
+              height: heightUserIconMenuOptions,
+            }}
+            src={UserIcon}
+            alt={"icono de usuario"}
+          />
         </div>
-      )}
+        <hr className="menu-hr-user" />
+        {dataMenuOptions.map((option, index) => (
+          <MenuOption
+            key={index}
+            title={option.title}
+            iconClass={option.iconClass}
+            onClickUpdateTitle={handleOptionClick}
+            subMenuOptions={option.subMenuOptions}
+            isSubMenuExpanded={isSubMenuExpanded}
+            setIsSubMenuExpanded={setIsSubMenuExpanded}
+          />
+        ))}
+        <div className="container-menu-footer">
+          <p>Juan.cuesta@iptotal.com ©</p>
+        </div>
+      </div>
     </div>
   );
 };
