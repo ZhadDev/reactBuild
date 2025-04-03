@@ -1,0 +1,162 @@
+.component-products-resources-title{
+  color: gray;
+  font-size: 24px;
+}
+
+.products-resources-container{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+  border-radius: 5px;
+  height: 400px;
+  overflow: auto;
+  color: rgb(51, 51, 51);
+}
+
+.product-card-container{
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+}
+
+.product-card-container-element{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  background-color: #eaeaea;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.product-card-container-element-check{
+  display: flex;
+  justify-content: center;
+  width: 30%;
+}
+
+.product-card-container-element-title{
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.product-card-container-options{
+  display: flex;
+  width: 100%;
+  background-color: #f3f3f3;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.product-card-container-check-included{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+}
+
+.product-card-container-option-included{
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  width: 40%;
+}
+
+.product-card-container-option-included-title{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.product-card-container-option-included-description{
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.product-card-container-check-aditional{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+}
+
+.product-card-container-option-aditional{
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  width: 40%;
+}
+
+.product-card-container-option-aditional-title{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.product-card-container-option-aditional-description{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+/* Ocultar el checkbox predeterminado */
+input[type="checkbox"] {
+  appearance: none; /* Oculta el estilo predeterminado */
+  -webkit-appearance: none; /* Compatibilidad con navegadores WebKit */
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px; /* Cambia a 50% si quieres un checkbox redondeado */
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Estilo cuando el checkbox está seleccionado */
+input[type="checkbox"]:checked {
+  border-color: #ea8000; /* Borde naranja */
+  background-color: transparent; /* Fondo transparente */
+}
+
+input[type="checkbox"]:checked::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%; /* Ajusta el porcentaje del relleno */
+  height: 50%; /* Ajusta el porcentaje del relleno */
+  background-color: #ea8000; /* Color del relleno */
+  border-radius: 2px; /* Cambia a 50% si quieres un relleno redondeado */
+}
+
+/* Ocultar el radio button predeterminado */
+input[type="radio"] {
+  appearance: none; /* Oculta el estilo predeterminado */
+  -webkit-appearance: none; /* Compatibilidad con navegadores WebKit */
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Estilo cuando el radio button está seleccionado */
+input[type="radio"]:checked {
+  border-color: #ea8000; /* Borde naranja */
+}
+
+input[type="radio"]:checked::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%; /* Ajusta el porcentaje del relleno */
+  height: 50%; /* Ajusta el porcentaje del relleno */
+  background-color: #ea8000; /* Color del relleno */
+  border-radius: 50%;
+}
