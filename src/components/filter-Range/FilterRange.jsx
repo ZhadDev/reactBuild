@@ -5,9 +5,11 @@ import "./FilterRange.css";
  * Componente para un filtro de rango con dos controles deslizantes (mínimo y máximo).
  * @param {number} min - Valor mínimo del rango.
  * @param {number} max - Valor máximo del rango.
- * @param {function} onChange - Función que se ejecuta al cambiar los valores del rango.
+ * @param {number} minRange - Diferencia mínima entre los valores mínimo y máximo.
+ * @param {function} callbackFilRange - Función que se ejecuta al cambiar los valores del rango.
  */
 const FilterRange = ({
+  titleFilterRange = "Valor",
   min = 0,
   max = 100,
   minRange = 0,
@@ -18,6 +20,9 @@ const FilterRange = ({
     minValue: min,
     maxValue: max,
   });
+
+  // Determina si los controles deslizantes deben estar deshabilitados
+  const isDisabled = minRange > max - min;
 
   const onChange = (data) => {
     callbackFilRange(data); // Llama a la función callbackFilRange si es válida
@@ -56,7 +61,7 @@ const FilterRange = ({
   return (
     <div className="filter-range-container">
       <div className="range-container">
-        <div className="range-container-title">Valor:</div>
+        <div className="range-container-title">{titleFilterRange}:</div>
         <div className="range-container-inputs">
           {/* Control deslizante para el valor mínimo */}
           <input
@@ -66,6 +71,7 @@ const FilterRange = ({
             max={max}
             value={rangeValues.minValue}
             onChange={handleMinChange}
+            disabled={isDisabled} // Deshabilita si minRange está fuera del rango
           />
           {/* Control deslizante para el valor máximo */}
           <input
@@ -75,6 +81,7 @@ const FilterRange = ({
             max={max}
             value={rangeValues.maxValue}
             onChange={handleMaxChange}
+            disabled={isDisabled} // Deshabilita si minRange está fuera del rango
           />
           {/* Barra visual del rango */}
           <div className="range-track">
@@ -109,4 +116,4 @@ const FilterRange = ({
   );
 };
 
-export default FilterRange;
+export  {FilterRange}
