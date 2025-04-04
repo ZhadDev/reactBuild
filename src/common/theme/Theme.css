@@ -1,8 +1,14 @@
 :root {
   /* COLORS */
-  --primary-color: #222228;
+  --primary-color: #e88100;
+  --primary-color-light: #2c283e;
+  --primary-color-dark: #1a1824;
   --secondary-color: #38383e;
+  --secondary-color-light: #4c4c5a;
+  --secondary-color-dark: #2c283e;
   --third-color: #1277ff;
+  --third-color-light: #2c283e;
+  --third-color-dark: #1a1824;
 
   /* FONTS */
   --font-Title: "Roboto", sans-serif;
@@ -26,6 +32,11 @@
   --bckg-loader-clr: #1179da80;
   --font-loader-clr: conic-gradient(#1277ff 0 0) no-repeat text;
   --time-loader-dft: 3s;
+
+  /* CARDS DATOS*INTERNET || MINUTOS*TV || SMS*TELEFONIA */
+  --card-prdSrv-datosInternet: #01bae7;
+  --card-prdSrv-minutosTV: #5c06ab;
+  --card-prdSrv-smsTelefonia: #a60890;
 }
 
 .font-Title {
