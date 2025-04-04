@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './FilterRange.css';
+import React, { useState } from "react";
+import "./FilterRange.css";
 
 /**
  * Componente para un filtro de rango con dos controles deslizantes (mínimo y máximo).
@@ -7,18 +7,33 @@ import './FilterRange.css';
  * @param {number} max - Valor máximo del rango.
  * @param {function} onChange - Función que se ejecuta al cambiar los valores del rango.
  */
-const FilterRange = ({ min = 0, max = 100, onChange = () => {} }) => {
+const FilterRange = ({
+  min = 0,
+  max = 100,
+  minRange = 0,
+  callbackFilRange,
+}) => {
   // Estado para almacenar los valores actuales del rango
-  const [rangeValues, setRangeValues] = useState({ minValue: min, maxValue: max });
+  const [rangeValues, setRangeValues] = useState({
+    minValue: min,
+    maxValue: max,
+  });
+
+  const onChange = (data) => {
+    callbackFilRange(data); // Llama a la función callbackFilRange si es válida
+  };
 
   /**
    * Maneja el cambio del control deslizante mínimo.
    * @param {object} e - Evento del cambio.
    */
   const handleMinChange = (e) => {
-    const value = Math.min(Number(e.target.value), rangeValues.maxValue - 1); // Asegura que el mínimo no supere al máximo
+    const value = Math.min(
+      Number(e.target.value),
+      rangeValues.maxValue - minRange
+    ); // Asegura que el mínimo no supere al máximo
     setRangeValues((prev) => ({ ...prev, minValue: value })); // Actualiza el estado
-    if (typeof onChange === 'function') {
+    if (typeof onChange === "function") {
       onChange({ ...rangeValues, minValue: value }); // Llama a la función onChange si es válida
     }
   };
@@ -28,9 +43,12 @@ const FilterRange = ({ min = 0, max = 100, onChange = () => {} }) => {
    * @param {object} e - Evento del cambio.
    */
   const handleMaxChange = (e) => {
-    const value = Math.max(Number(e.target.value), rangeValues.minValue + 1); // Asegura que el máximo no sea menor al mínimo
+    const value = Math.max(
+      Number(e.target.value),
+      rangeValues.minValue + minRange
+    ); // Asegura que el máximo no sea menor al mínimo
     setRangeValues((prev) => ({ ...prev, maxValue: value })); // Actualiza el estado
-    if (typeof onChange === 'function') {
+    if (typeof onChange === "function") {
       onChange({ ...rangeValues, maxValue: value }); // Llama a la función onChange si es válida
     }
   };
@@ -64,7 +82,9 @@ const FilterRange = ({ min = 0, max = 100, onChange = () => {} }) => {
               className="range-highlight"
               style={{
                 left: `${((rangeValues.minValue - min) / (max - min)) * 100}%`,
-                right: `${100 - ((rangeValues.maxValue - min) / (max - min)) * 100}%`,
+                right: `${
+                  100 - ((rangeValues.maxValue - min) / (max - min)) * 100
+                }%`,
               }}
             ></div>
           </div>
@@ -74,11 +94,15 @@ const FilterRange = ({ min = 0, max = 100, onChange = () => {} }) => {
       <div className="range-labels">
         <div className="range-label-min">
           <div className="range-label-title-min">Min.</div>
-          <div className="range-label-min-value">$ {rangeValues.minValue.toLocaleString()}</div>
+          <div className="range-label-min-value">
+            $ {rangeValues.minValue.toLocaleString()}
+          </div>
         </div>
         <div className="range-label-max">
           <div className="range-label-title-max">Max.</div>
-          <div className="range-label-max-value">$ {rangeValues.maxValue.toLocaleString()}</div>
+          <div className="range-label-max-value">
+            $ {rangeValues.maxValue.toLocaleString()}
+          </div>
         </div>
       </div>
     </div>
