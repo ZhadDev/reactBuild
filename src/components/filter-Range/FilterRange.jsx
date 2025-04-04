@@ -3,6 +3,7 @@ import "./FilterRange.css";
 
 /**
  * Componente para un filtro de rango con dos controles deslizantes (mínimo y máximo).
+ * @param {text} min - Titulo del componente.
  * @param {number} min - Valor mínimo del rango.
  * @param {number} max - Valor máximo del rango.
  * @param {number} minRange - Diferencia mínima entre los valores mínimo y máximo.
