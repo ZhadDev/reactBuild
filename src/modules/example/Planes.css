@@ -1,0 +1,36 @@
+.cardsPlan {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100px 40px 1fr 50px;
+  border: 3pt solid green;
+  grid-template-areas: "namePlan pricePlan" "servicePlan servicePlanB" "listCard listCard" "includes includes";
+}
+.namePlan {
+  display: grid;
+  grid-area: namePlan;
+}
+.pricePlan {
+  display: grid;
+  grid-area: pricePlan;
+}
+.servicePlan {
+  display: grid;
+  grid-area: servicePlan;
+}
+.servicePlanB {
+  display: grid;
+  grid-area: servicePlanB;
+}
+.listCard {
+  display: grid;
+  grid-area: listCard;
+  grid-auto-flow: column;
+  width: fit-content;
+  gap: 7pt;
+  padding: 5pt;
+  border: 2pt solid #d7d7cf6e;
+}
+.includes {
+  display: grid;
+  grid-area: includes;
+}

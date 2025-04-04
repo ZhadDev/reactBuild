@@ -15,6 +15,7 @@ import { setFtnProgress } from "../common/redux/slices/utilSlice";
 import { Home } from "./Common/home/Home";
 import { NoMatch } from "./Common/noMatch/NoMatch";
 import { ToastNotify } from "../components/toastNotify/ToastNotify";
+import Example from "./example/Example";
 
 const Users = () => {
   return (
@@ -76,7 +77,7 @@ const AppRoutes = () => {
                 redirectPath={"/users"}
                 isAllowed={roles.includes("admin")}
               >
-                <Home />
+                <Example />
               </ProtectedRoute>
             }
           />

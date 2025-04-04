@@ -1,0 +1,47 @@
+.container-example {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "a a a" "b b c" "d e e";
+  width: 100vw;
+  height: calc(100vh - 60px);
+  gap: 15pt;
+  padding: 5pt 10pt 10pt 10pt;
+}
+.a {
+  display: grid;
+  grid-area: a;
+  width: 100%;
+  background: red;
+}
+
+.b {
+  display: grid;
+  grid-area: b;
+  width: 100%;
+  background: blue;
+}
+
+.c {
+  display: grid;
+  grid-area: c;
+  width: 100%;
+
+  background: yellow;
+}
+
+.d {
+  display: grid;
+  grid-area: d;
+  width: 100%;
+
+  background: purple;
+}
+
+.e {
+  display: grid;
+  grid-area: e;
+  width: 100%;
+
+  background: orange;
+}
